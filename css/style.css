@@ -184,6 +184,13 @@ nav {
   font-size: 1.5rem;
 }
 
+a{
+  text-decoration: none;
+}
+.get-in-Touch {
+  color: var(--dark);
+}
+
 /* Mobile Navigation */
 @media (max-width: 768px) {
   .nav-links {
