@@ -54,8 +54,74 @@ document.querySelectorAll("section").forEach((section) => {
 });
 
 // Contact form submission
-document.getElementById("contactForm").addEventListener("submit", function (e) {
+document.getElementById("contactForm").addEventListener("submit", async function (e) {
   e.preventDefault();
-  alert("Thank you for your message! I will get back to you soon.");
-  this.reset();
+
+  const form = this;
+  const submitBtn = form.querySelector(".submit-btn");
+  const originalBtnText = submitBtn.textContent;
+
+  // Get form data
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const subject = document.getElementById("subject").value;
+  const message = document.getElementById("message").value;
+
+  // --- CONFIGURATION ---
+  // 1. Telegram Config (Replace with your own credentials)
+  const TELEGRAM_BOT_TOKEN = "YOUR_BOT_TOKEN_HERE";
+  const TELEGRAM_CHAT_ID = "YOUR_CHAT_ID_HERE";
+
+  // 2. Formspree Config (Replace with your Formspree ID or Email)
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORMSPREE_ID_HERE";
+  // ---------------------
+
+  // UI State: Loading
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Sending...";
+
+  try {
+    // 1. Send to Telegram
+    const telegramMessage = `
+🚀 *New Portfolio Message*
+👤 *Name:* ${name}
+📧 *Email:* ${email}
+📌 *Subject:* ${subject}
+💬 *Message:* ${message}
+    `;
+
+    const telegramPromise = fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: TELEGRAM_CHAT_ID,
+        text: telegramMessage,
+        parse_mode: "Markdown",
+      }),
+    });
+
+    // 2. Send to Formspree (Email)
+    const formspreePromise = fetch(FORMSPREE_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        subject: subject,
+        message: message,
+      }),
+    });
+
+    // Wait for both to finish (or at least attempt)
+    await Promise.all([telegramPromise, formspreePromise]);
+
+    alert("Thank you! Your message has been sent to my Email and Telegram.");
+    form.reset();
+  } catch (error) {
+    console.error("Error sending message:", error);
+    alert("Oops! There was a problem sending your message. Please try again.");
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalBtnText;
+  }
 });

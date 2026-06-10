@@ -13,13 +13,22 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/style.css" />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init("YOUR_PUBLIC_KEY_HERE"); // We will replace this later
+      })();
+    </script>
   </head>
   <body>
     <!-- Header & Navigation -->
     <header>
       <div class="container">
         <nav>
-          <a href="#" class="logo"
+          <a href="#hero" class="logo"
             >SAVIN PHUONG<span class="logo-dot"></span
           ></a>
           <ul class="nav-links">
@@ -40,6 +49,16 @@
 
     <!-- Hero Section -->
     <section id="hero" class="hero">
+      <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+      </div>
       <div class="container">
         <div class="hero-content">
           <div class="hero-text fade-in">
@@ -115,6 +134,16 @@
 
     <!-- Education Section -->
     <section id="education" class="education">
+      <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+      </div>
       <div class="container">
         <h2>Education Background</h2>
         <div class="timeline">
@@ -222,6 +251,16 @@
 
     <!-- Habits Section -->
     <section id="habits" class="habits">
+      <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+      </div>
       <div class="container">
         <h2>My Habits & Mindset</h2>
         <div class="habits-container">
@@ -485,14 +524,13 @@
                 <label for="message" class="form-label">Message</label>
                 <textarea
                   id="message"
+                  name="message"
                   class="form-control"
                   placeholder="Enter your message"
                   required
                 ></textarea>
               </div>
-              <a href="mailto:savin.phuong@student.passerellesnumeriques.org">
-                <button type="submit" class="submit-btn">Send Message</button>
-              </a>
+              <button type="submit" class="submit-btn">Send Message</button>
             </form>
           </div>
         </div>

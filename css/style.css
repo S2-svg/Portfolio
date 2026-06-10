@@ -225,9 +225,103 @@ a{
   }
 }
 
+/* Floating Bubbles */
+.bubbles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bubble {
+  position: absolute;
+  bottom: -100px;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: rise 10s infinite ease-in;
+}
+
+.bubble:nth-child(1) {
+  left: 10%;
+  width: 80px;
+  height: 80px;
+  animation-duration: 8s;
+}
+.bubble:nth-child(2) {
+  left: 20%;
+  width: 50px;
+  height: 50px;
+  animation-duration: 12s;
+  animation-delay: 1s;
+}
+.bubble:nth-child(3) {
+  left: 35%;
+  width: 100px;
+  height: 100px;
+  animation-duration: 15s;
+  animation-delay: 2s;
+}
+.bubble:nth-child(4) {
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  animation-duration: 10s;
+  animation-delay: 4s;
+}
+.bubble:nth-child(5) {
+  left: 65%;
+  width: 70px;
+  height: 70px;
+  animation-duration: 18s;
+  animation-delay: 1s;
+}
+.bubble:nth-child(6) {
+  left: 80%;
+  width: 90px;
+  height: 90px;
+  animation-duration: 12s;
+  animation-delay: 3s;
+}
+.bubble:nth-child(7) {
+  left: 70%;
+  width: 50px;
+  height: 50px;
+  animation-duration: 14s;
+  animation-delay: 5s;
+}
+.bubble:nth-child(8) {
+  left: 25%;
+  width: 60px;
+  height: 60px;
+  animation-duration: 11s;
+  animation-delay: 2s;
+}
+
+@keyframes rise {
+  0% {
+    bottom: -100px;
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(100px);
+  }
+  100% {
+    bottom: 1080px;
+    transform: translateX(-200px);
+  }
+}
+
 /* Hero Section */
 .hero {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(-45deg, #667eea, #764ba2, #6366f1, #4f46e5);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
   color: white;
   padding: 180px 0 120px;
   position: relative;
@@ -411,7 +505,9 @@ h2 {
 
 /* Education Section */
 .education {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(-45deg, #667eea, #764ba2, #6366f1, #4f46e5);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
   color: var(--accent);
   padding: 180px 0 120px;
   position: relative;
@@ -574,7 +670,9 @@ p {
 
 /* Habits Section */
 .habits {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(-45deg, #667eea, #764ba2, #6366f1, #4f46e5);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
   color: white;
   position: relative;
   overflow: hidden;
@@ -881,6 +979,18 @@ footer {
 }
 
 /* Animations */
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
